@@ -1,12 +1,13 @@
 from GeosteeringOffice.Autocorrelation.Api import Transfer
 from AutoCorrelation import GenerateSynthetics
 
+
 class SyntheticGenerator:
-    def __init__(self, scenario_path):
+    def __init__(self, scenario_path, angle: int = 120, synthetic_count: int = 50):
         self.Scenario = Transfer.Load(scenario_path)
         self.Generator = GenerateSynthetics()
-        self.Generator.Angle = 120
-        self.Generator.SyntheticCountOnStep = 50
+        self.Generator.Angle = angle
+        self.Generator.SyntheticCountOnStep = synthetic_count
 
     def generate(self, top_x1, top_y1, top_x2, top_y2, bot_x1, bot_y1, bot_x2, bot_y2):
         self.Generator.FirstPointTopX = top_x1
