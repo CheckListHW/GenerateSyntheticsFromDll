@@ -17,8 +17,7 @@ if __name__ == '__main__':
     step = 30
 
     import time
-    start_time = time.time()
-    print(f'start: {time.time() - start_time}')
+    print(f'start: {time.time() - (start_time := time.time())}')
     curve = generator.generate(top_x, top_y, bot_x, bot_y).Points
     print(f'finish: {round(time.time() - start_time, 8)/1000}ms')
 
