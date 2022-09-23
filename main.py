@@ -1,12 +1,21 @@
 import os
 
 from utils.synthetic_generator.generator import SyntheticGenerator
+from GeosteeringOffice.Autocorrelation.Api import Transfer
 
 from matplotlib import pyplot as plt
 
 if __name__ == '__main__':
     scenario_path = os.getcwd() + '/input.xml'
-    generator = SyntheticGenerator(scenario_path)
+    scenario = Transfer.Load(scenario_path)
+
+    offset_x = []
+    offset_y = []
+    for point in scenario.Properties[0].Offset.Points:
+        offset_x.append(point.Position)
+        offset_y.append(point.Value)
+
+    generator = SyntheticGenerator(scenario_path, offset_x, offset_y)
 
     top_x = [966.7529628351272, 996.7529628351272]
     top_y = [1921.40443483379, 1926.6005872564963]

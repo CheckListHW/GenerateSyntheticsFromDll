@@ -1,2 +1,2 @@
 pythonnet
-matplotlib
+matplotlib==3.5.0
